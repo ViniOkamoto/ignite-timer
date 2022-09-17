@@ -1,4 +1,3 @@
-interface HistoryPageProps {}
-export function HistoryPage(props: HistoryPageProps) {
-  return <> History </>
+export default function HistoryPage() {
+  return <div>HistoryPage</div>
 }

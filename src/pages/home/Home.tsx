@@ -1,4 +1,3 @@
-interface HomePageProps {}
-export function HomePage(props: HomePageProps) {
-  return <> Home </>
+export default function HomePage() {
+  return <div>HomePage</div>
 }
