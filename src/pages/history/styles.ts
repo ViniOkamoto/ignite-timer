@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { defaultTheme } from '../../styles/themes/default'
 
 export const HistoryContainer = styled.main`
   flex: 1;
@@ -58,5 +59,30 @@ export const HistoryList = styled.div`
         padding-right: 1.5rem;
       }
     }
+  }
+`
+
+const STATUS_COLORS = {
+  completed: defaultTheme['green-500'],
+  inProgress: defaultTheme['yellow-500'],
+  canceled: defaultTheme['red-500'],
+} as const
+
+type StatusColors = keyof typeof STATUS_COLORS
+
+interface TaskStatusProps {
+  statusColor: StatusColors
+}
+export const TaskStatus = styled.span<TaskStatusProps>`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &::before {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: ${(props) => [STATUS_COLORS[props.statusColor]]};
   }
 `
