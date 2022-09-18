@@ -5,6 +5,8 @@ import {
   CountDownDivider,
   FormContainer,
   HomeContainer,
+  TaskDurationInput,
+  TaskInput,
 } from './styles'
 
 export default function HomePage() {
@@ -13,9 +15,26 @@ export default function HomePage() {
       <form action="">
         <FormContainer>
           <label htmlFor="task-name">I will work on</label>
-          <input type="text" name="Task name" id="task-name" />
+          <TaskInput
+            id="task-name"
+            list="task-suggestions"
+            placeholder="Prepare layout"
+            type="text"
+          />
+          <datalist id="task-suggestions">
+            <option value="P1" />
+            <option value="P2" />
+            <option value="P3" />
+            <option value="P4" />
+          </datalist>
           <label htmlFor="task-duration">during</label>
-          <input type="text" name="During in minutes" id="task-duration" />
+          <TaskDurationInput
+            id="task-duration"
+            placeholder="00"
+            type="number"
+            step={5}
+            max={60}
+          />
           <span>minutes.</span>
         </FormContainer>
         <CountdownContainer>
