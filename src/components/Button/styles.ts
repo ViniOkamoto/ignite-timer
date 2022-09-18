@@ -26,6 +26,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
   color: ${(props) => props.theme['gray-100']};
   font-weight: bold;
   cursor: pointer;
+  transition: 0.5s opacity, 0.2s background;
 
   &:disabled {
     opacity: 0.7;

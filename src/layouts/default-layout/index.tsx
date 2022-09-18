@@ -6,8 +6,10 @@ interface DefaultLayoutProps {}
 export default function DefaultLayout(props: DefaultLayoutProps) {
   return (
     <LayoutContainer>
-      <Header />
-      <Outlet />
+      <div className="wrapper">
+        <Header />
+        <Outlet />
+      </div>
     </LayoutContainer>
   )
 }

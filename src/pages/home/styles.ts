@@ -15,7 +15,7 @@ export const HomeContainer = styled.main`
   }
 `
 export const FormContainer = styled.div`
-  width: 100%;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,6 +34,7 @@ const BaseInput = styled.input`
   font-size: 1.125rem;
   padding: 0 0.5rem;
   color: ${(props) => props.theme['gray-100']};
+  transition: 0.5s border-color;
 
   &:focus {
     box-shadow: none;
@@ -62,7 +63,6 @@ export const CountdownContainer = styled.div`
   font-size: 10rem;
   line-height: 8rem;
   color: ${(props) => props.theme['gray-100']};
-
   display: flex;
   gap: 1rem;
 
