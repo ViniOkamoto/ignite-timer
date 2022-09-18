@@ -13,6 +13,13 @@ export const GlobalStyle = createGlobalStyle`
         
     }
 
+    
+    @media (max-width: 768px) {
+    html {
+        font-size: 87.5%;
+    }
+    }
+    
     body {
         background: ${(props) => props.theme['gray-900']};
         color:  ${(props) => props.theme['gray-300']};
