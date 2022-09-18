@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import DefaultLayout from './layouts/default-layout'
-import HistoryPage from './pages/history/History'
+import HistoryPage from './pages/history'
 import HomePage from './pages/home'
 import NotFoundPage from './pages/NotFound'
 
