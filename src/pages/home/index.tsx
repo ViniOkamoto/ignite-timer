@@ -4,8 +4,9 @@ import { differenceInSeconds } from 'date-fns'
 import { HandPalm, Play } from 'phosphor-react'
 import { Button } from '../../components/Button'
 import { HomeContainer } from './styles'
-import { useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import Countdown from './components/countdown'
+import NewCycleForm from './components/new-cycle-form'
 
 interface Cycle {
   id: string
@@ -16,9 +17,27 @@ interface Cycle {
   finishedDate?: Date
 }
 
+interface CyclesContextType {
+  activeCycle: Cycle | undefined
+  activeCycleId: string | null
+  markCycleAsFinished: () => void
+}
+
+export const CyclesContext = createContext({} as CyclesContextType)
+
 export default function HomePage() {
   const [cycles, setCycles] = useState<Cycle[]>([])
   const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
+  function markCycleAsFinished() {
+    setCycles((state) =>
+      state.map((cycle) => {
+        if (cycle.id === activeCycleId) {
+          return { ...cycle, finishedDate: new Date() }
+        }
+        return cycle
+      }),
+    )
+  }
 
   function handleCreateNewCycle(data: NewCycleFormData) {
     const newCycle: Cycle = {
@@ -49,29 +68,21 @@ export default function HomePage() {
 
   const activeCycle = cycles.find((c) => c.id === activeCycleId)
 
-  const totalSeconds = activeCycle ? activeCycle.taskDuration * 60 : 0
-  const currentSeconds = activeCycle ? totalSeconds - amountSecondPassed : 0
-  const minutesAmount = Math.floor(currentSeconds / 60)
-  const secondsAmount = currentSeconds % 60
-  const minutes = String(minutesAmount).padStart(2, '0')
-  const seconds = String(secondsAmount).padStart(2, '0')
-
   const taskNameInputId = 'taskName'
   const taskName = watch(taskNameInputId)
   const taskDurationInputId = 'taskDuration'
   const taskDuration = watch(taskDurationInputId)
   const formIsValid = !taskName || !taskDuration
 
-  useEffect(() => {
-    if (activeCycle) {
-      document.title = `Running ${minutes}:${seconds}`
-    }
-  }, [minutes, seconds, activeCycle])
-
   return (
     <HomeContainer>
       <form action="" onSubmit={handleSubmit(handleCreateNewCycle)}>
-        <Countdown minutes={minutes} seconds={seconds} />
+        <CyclesContext.Provider
+          value={{ activeCycle, activeCycleId, markCycleAsFinished }}
+        >
+          <NewCycleForm />
+          <Countdown minutes={minutes} seconds={seconds} />
+        </CyclesContext.Provider>
         {activeCycle ? (
           <Button
             text="Stop countdown"
