@@ -65,7 +65,7 @@ export const HistoryList = styled.div`
 const STATUS_COLORS = {
   completed: defaultTheme['green-500'],
   inProgress: defaultTheme['yellow-500'],
-  canceled: defaultTheme['red-500'],
+  interrupted: defaultTheme['red-500'],
 } as const
 
 type StatusColors = keyof typeof STATUS_COLORS
