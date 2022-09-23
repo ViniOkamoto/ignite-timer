@@ -7,49 +7,54 @@ export default function HistoryPage() {
   return (
     <HistoryContainer>
       <h1>My History</h1>
-
-      <HistoryList>
-        <table>
-          <thead>
-            <tr>
-              <th>Task</th>
-              <th>Duration</th>
-              <th>Started</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cycles.map((cycle) => {
-              return (
-                <tr key={cycle.id}>
-                  <td>{cycle.taskName}</td>
-                  <td>{`${cycle.taskDuration} minutes`}</td>
-                  <td>
-                    {formatDistanceToNow(cycle.startedAt, {
-                      addSuffix: true,
-                    })}
-                  </td>
-                  <td>
-                    {cycle.finishedDate && (
-                      <TaskStatus statusColor="completed">Completed</TaskStatus>
-                    )}
-                    {cycle.interruptDate && (
-                      <TaskStatus statusColor="interrupted">
-                        Interrupted
-                      </TaskStatus>
-                    )}
-                    {!cycle.finishedDate && !cycle.interruptDate && (
-                      <TaskStatus statusColor="inProgress">
-                        In progress
-                      </TaskStatus>
-                    )}
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
-      </HistoryList>
+      {cycles.length > 0 ? (
+        <HistoryList>
+          <table>
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Duration</th>
+                <th>Started</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cycles.map((cycle) => {
+                return (
+                  <tr key={cycle.id}>
+                    <td>{cycle.taskName}</td>
+                    <td>{`${cycle.taskDuration} minutes`}</td>
+                    <td>
+                      {formatDistanceToNow(cycle.startedAt, {
+                        addSuffix: true,
+                      })}
+                    </td>
+                    <td>
+                      {cycle.finishedDate && (
+                        <TaskStatus statusColor="completed">
+                          Completed
+                        </TaskStatus>
+                      )}
+                      {cycle.interruptDate && (
+                        <TaskStatus statusColor="interrupted">
+                          Interrupted
+                        </TaskStatus>
+                      )}
+                      {!cycle.finishedDate && !cycle.interruptDate && (
+                        <TaskStatus statusColor="inProgress">
+                          In progress
+                        </TaskStatus>
+                      )}
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </HistoryList>
+      ) : (
+        <h1> Is empty</h1>
+      )}
     </HistoryContainer>
   )
 }
