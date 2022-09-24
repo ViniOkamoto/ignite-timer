@@ -25,7 +25,7 @@ export default function HistoryPage() {
                     <td>{cycle.taskName}</td>
                     <td>{`${cycle.taskDuration} minutes`}</td>
                     <td>
-                      {formatDistanceToNow(cycle.startedAt, {
+                      {formatDistanceToNow(new Date(cycle.startedAt), {
                         addSuffix: true,
                       })}
                     </td>
