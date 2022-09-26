@@ -4,7 +4,7 @@ export const FormContainer = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.5rem;
   color: ${(props) => props.theme['gray-100']};
   font-size: 1.125rem;
