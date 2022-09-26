@@ -19,36 +19,38 @@ export default function HistoryPage() {
               </tr>
             </thead>
             <tbody>
-              {cycles.map((cycle) => {
-                return (
-                  <tr key={cycle.id}>
-                    <td>{cycle.taskName}</td>
-                    <td>{`${cycle.taskDuration} minutes`}</td>
-                    <td>
-                      {formatDistanceToNow(new Date(cycle.startedAt), {
-                        addSuffix: true,
-                      })}
-                    </td>
-                    <td>
-                      {cycle.finishedDate && (
-                        <TaskStatus statusColor="completed">
-                          Completed
-                        </TaskStatus>
-                      )}
-                      {cycle.interruptDate && (
-                        <TaskStatus statusColor="interrupted">
-                          Interrupted
-                        </TaskStatus>
-                      )}
-                      {!cycle.finishedDate && !cycle.interruptDate && (
-                        <TaskStatus statusColor="inProgress">
-                          In progress
-                        </TaskStatus>
-                      )}
-                    </td>
-                  </tr>
-                )
-              })}
+              {cycles
+                .map((cycle) => {
+                  return (
+                    <tr key={cycle.id}>
+                      <td>{cycle.taskName}</td>
+                      <td>{`${cycle.taskDuration} minutes`}</td>
+                      <td>
+                        {formatDistanceToNow(new Date(cycle.startedAt), {
+                          addSuffix: true,
+                        })}
+                      </td>
+                      <td>
+                        {cycle.finishedDate && (
+                          <TaskStatus statusColor="completed">
+                            Completed
+                          </TaskStatus>
+                        )}
+                        {cycle.interruptDate && (
+                          <TaskStatus statusColor="interrupted">
+                            Interrupted
+                          </TaskStatus>
+                        )}
+                        {!cycle.finishedDate && !cycle.interruptDate && (
+                          <TaskStatus statusColor="inProgress">
+                            In progress
+                          </TaskStatus>
+                        )}
+                      </td>
+                    </tr>
+                  )
+                })
+                .reverse()}
             </tbody>
           </table>
         </HistoryList>
