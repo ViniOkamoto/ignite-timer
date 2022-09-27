@@ -1,7 +1,14 @@
 import { useContext } from 'react'
 import { CyclesContext } from '../../contexts/CycleContext'
-import { HistoryContainer, HistoryList, TaskStatus } from './styles'
+import {
+  EmptyListContainer,
+  HistoryContainer,
+  HistoryList,
+  TaskStatus,
+} from './styles'
 import { formatDistanceToNow } from 'date-fns'
+import { SmileyBlank } from 'phosphor-react'
+import { Button } from '../../components/Button'
 export default function HistoryPage() {
   const { cycles } = useContext(CyclesContext)
   return (
@@ -55,7 +62,14 @@ export default function HistoryPage() {
           </table>
         </HistoryList>
       ) : (
-        <h1> Is empty</h1>
+        <EmptyListContainer>
+          <SmileyBlank />
+          <h1>Oops! You do not have any task</h1>
+          <span>
+            It is easy to create, set up your task and start the countdown
+          </span>
+          <Button variant="primary" to="/" text="Go to countdownn"></Button>
+        </EmptyListContainer>
       )}
     </HistoryContainer>
   )

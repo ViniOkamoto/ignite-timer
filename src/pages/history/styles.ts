@@ -86,3 +86,23 @@ export const TaskStatus = styled.span<TaskStatusProps>`
     background: ${(props) => [STATUS_COLORS[props.statusColor]]};
   }
 `
+
+export const EmptyListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+  svg {
+    font-size: 8rem;
+    color: ${(props) => props.theme['gray-600']};
+  }
+  h1 {
+    font-size: 1.5rem;
+    color: ${(props) => props.theme['gray-300']};
+  }
+  span {
+    margin: 1rem 0 2rem 0;
+    color: ${(props) => props.theme['gray-300']};
+  }
+`
