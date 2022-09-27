@@ -5,11 +5,11 @@
 </div>
 
 <h1 align='center'>
-Ignite Timer
+    Ignite Timer
 </h1>
-
- # 🌐 Check this out!
-  - [Ignite timer](https://viniokamoto.github.io/ignite-timer/);
+<a href="https://viniokamoto.github.io/ignite-timer/" align='center'>
+    <h2>🌐 Check this out!</h2> 
+</a>
 
  # 💻 Project
  
