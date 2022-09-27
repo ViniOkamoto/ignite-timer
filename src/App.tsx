@@ -9,7 +9,7 @@ import { StyledToastContainer } from './styles/themes/toast'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/ignite-timer/">
       <ThemeProvider theme={defaultTheme}>
         <CyclesContextProvider>
           <CountdownContextProvider>
