@@ -6,7 +6,7 @@ export enum ActionTypes {
   INTERRUPT_CURRENT_CYCLE = 'INTERRUPT_CURRENT_CYCLE',
 }
 
-export function addNewCycleAction(newCycle: Cycle) {
+export function createNewCycleAction(newCycle: Cycle) {
   return {
     type: ActionTypes.CREATE_NEW_CYCLE,
     payload: {

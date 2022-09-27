@@ -1,5 +1,7 @@
 import { v4 as uniqueId } from 'uuid'
+import { ToastContainer, toast } from 'react-toastify'
 
+import 'react-toastify/dist/ReactToastify.css'
 import {
   createContext,
   ReactNode,
@@ -9,13 +11,14 @@ import {
 } from 'react'
 import cyclesReducer from '../reducers/cycles/reducer'
 import {
-  ActionTypes,
-  addNewCycleAction as createNewCycleAction,
+  createNewCycleAction,
   interruptCurrentCycleAction,
   markCycleAsFinishedAction,
 } from '../reducers/cycles/actions'
 import { Cycle } from '../models/Cycle'
 import { differenceInSeconds } from 'date-fns'
+import alarm from '../assets/audio/alarm.mp3'
+import useSound from 'use-sound'
 
 interface CreateCycleData {
   taskName: string
@@ -40,6 +43,7 @@ interface CyclesContextProviderProps {
 export default function CyclesContextProvider({
   children,
 }: CyclesContextProviderProps) {
+  const [play, { stop }] = useSound(alarm)
   const [cyclesState, dispatch] = useReducer(
     cyclesReducer,
     {
@@ -78,6 +82,8 @@ export default function CyclesContextProvider({
 
   function markCycleAsFinished() {
     dispatch(markCycleAsFinishedAction())
+    play()
+    toast.success(`${activeCycle?.taskName} finished`)
   }
 
   function setSecondsPassed(seconds: number) {
@@ -91,13 +97,14 @@ export default function CyclesContextProvider({
       taskDuration: data.taskDuration,
       startedAt: new Date(),
     }
-
     dispatch(createNewCycleAction(newCycle))
-
     setAmountSecondPassed(0)
+    toast.success(`${newCycle.taskName} started`)
+    stop()
   }
 
   function interruptCurrentCycle() {
+    toast.warn(`${activeCycle?.taskName} interrupted`)
     dispatch(interruptCurrentCycleAction())
   }
 

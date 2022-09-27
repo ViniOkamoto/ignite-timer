@@ -1,5 +1,3 @@
-import { v4 as uniqueId } from 'uuid'
-
 import { createContext, ReactNode, useEffect, useContext } from 'react'
 import { differenceInSeconds } from 'date-fns'
 import { CyclesContext } from './CycleContext'
