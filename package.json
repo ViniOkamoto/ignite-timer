@@ -1,9 +1,9 @@
 {
   "name": "ignite-timer",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
-  "homepage": "http://{github-username}.github.io/{repo-name}",
+  "homepage": "https://viniokamoto.github.io/ignite-timer/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
