@@ -7,9 +7,12 @@
 <h1 align='center'>
     Ignite Timer
 </h1>
-<a href="https://viniokamoto.github.io/ignite-timer/" align='center'>
-    <h2>🌐 Check this out!</h2> 
-</a>
+<h2 align='center'>
+    <a href="https://viniokamoto.github.io/ignite-timer/">
+    🌐 Check this out!
+    </a>
+</h2> 
+
 
  # 💻 Project
  
