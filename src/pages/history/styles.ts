@@ -6,6 +6,7 @@ export const HistoryContainer = styled.main`
   padding: 3.5rem;
   display: flex;
   flex-direction: column;
+  overflow: auto;
   h1 {
     font-size: 1.5rem;
     color: ${(props) => props.theme['gray-100']};
@@ -16,13 +17,13 @@ export const HistoryList = styled.div`
   flex: 1;
   overflow: auto;
   margin-top: 2rem;
-
+  padding-right: 1rem;
   table {
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
     min-width: 600px;
-
+    overflow-y: scroll;
     th {
       background-color: ${(props) => props.theme['gray-600']};
       padding: 1rem;

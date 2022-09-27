@@ -13,10 +13,30 @@ export const GlobalStyle = createGlobalStyle`
         
     }
 
+    ::-webkit-scrollbar {
+        height: 8px; 
+        width: 8px; 
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: ${(props) => props.theme['gray-500']};
+        border-radius: 8px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: ${(props) => props.theme['green-300']};
+    }
     
     @media (max-width: 768px) {
     html {
-        font-size: 70%;
+        font-size: 80%;
     }
     }
 
